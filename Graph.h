@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include <iomanip>
 #include <fstream>
 #include <ctime>
 #include <string>
@@ -77,4 +78,13 @@ vector<vector<int>> getGraphFromFile(int n, string path) {
 	fin.close();
 	return graph;
 
+}
+
+void printTheGraph(vector<vector<int>> graph) {
+	for (int i = 0; i < graph.size(); i++)
+	{
+		for (int j = 0; j < graph.size(); j++)
+			cout << setw(5) << graph[i][j];
+		cout << endl;
+	}
 }
