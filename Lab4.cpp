@@ -4,7 +4,9 @@
 int main()
 { 
     int n = 10;
-    vector<vector<int>> grapgh = createGraph(n);
+    string path = "Graph.txt";
+    //createGraph(n, path);
+    vector<vector<int>> grapgh = getGraph(n, path);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)

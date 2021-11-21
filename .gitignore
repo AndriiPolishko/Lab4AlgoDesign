@@ -1,6 +1,9 @@
+Debug/
+.vs/
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.user
 *.vs
-Graph.txt
+*.txt
+*.vcxproj.user
