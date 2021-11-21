@@ -3,16 +3,15 @@
 #include "Graph.h"
 int main()
 { 
-    int n = 10;
+    int n = 20;
     string path = "Graph.txt";
-    //vector<vector<int>> grapgh = createGraph(n, path);
-    //setGraphInFile(n, path, grapgh);
-    vector<vector<int>> grapgh = getGraphFromFile(n, path);
-
+    //vector<vector<int>> graph = createGraph(n, path);
+    //setGraphInFile(n, path, graph);
+    vector<vector<int>> graph = getGraphFromFile(n, path);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
-            cout << setw(5) << grapgh[i][j];
+            cout << setw(5) << graph[i][j];
         cout << endl;
     }
 

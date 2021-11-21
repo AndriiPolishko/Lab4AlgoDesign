@@ -21,16 +21,20 @@ vector<vector<int>> createGraph(int n, string path) {
 
 			int fill_or_not = rand() % 2 + 1;
 
-			if(fill_or_not%2==0 && degrees[i]<10 && visited[j][i]!=-1) {
+			if(fill_or_not%2==0  && visited[j][i]!=-1 && graph[j][i]==0) {
+				if (degrees[i] >= 10 || degrees[j] >= 10)
+					continue;
 				visited[i][j] = -1;
 				visited[j][i] = -1;
 				degrees[i]++;
+				degrees[j]++;
 				graph[i][j] = rand() % 150 + 5;
 				graph[j][i] = graph[i][j];
 
 			}
 		}
 	}
+	
 	
 	return graph;
 }
