@@ -22,7 +22,7 @@ vector<vector<int>> createGraph(int n, string path) {
 			if (i == j)
 				continue;
 
-			int fill_or_not = rand() % 2 + 1;
+			int fill_or_not = rand() % 3 + 1;
 
 			if(fill_or_not%2==0  && visited[j][i]!=-1 && graph[j][i]==0) {
 				if (degrees[i] >= NODE_DEGREE || degrees[j] >= NODE_DEGREE)
@@ -84,9 +84,16 @@ vector<vector<int>> getGraphFromFile(int n, string path) {
 
 void printTheGraph(vector<vector<int>> graph) {
 	for (int i = 0; i < graph.size(); i++)
+		cout << setw(5) << i;
+	cout << endl;
+	for (int i = 0; i < graph.size(); i++)
 	{
-		for (int j = 0; j < graph.size(); j++)
+		for (int j = 0; j < graph.size(); j++) {
+			if (j == 0)
+				cout << i;
 			cout << setw(5) << graph[i][j];
+		}
+			
 		cout << endl;
 	}
 }

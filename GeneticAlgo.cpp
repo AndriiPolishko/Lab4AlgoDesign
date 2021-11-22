@@ -16,7 +16,11 @@ vector<vector<int>> Genetic::generateInitialPopulation() {
 	start.push_back(source);
 	Q.push(start);
 	vector<int> visited;
+
+	
 	while(!Q.empty()) {
+		if (results.size() >= 50)
+			break;
 		vector<int> path = Q.front();
 
 		vector<int> temp_path;
@@ -26,19 +30,21 @@ vector<vector<int>> Genetic::generateInitialPopulation() {
 		int src = path[path.size() - 1];
 		visited.push_back(src);
 
-		if(src==destination) {
+		if(src==destination && path.size()>5) {
 			results.push_back(path);
 			continue;
 		}
 
 		for(int j = 0; j < n; j++) {
 
-			if(graph[src][j]!=0 && find(visited.begin(),visited.end(),j) == visited.end()) {
+			if(graph[src][j]!=0 && find(path.begin(), path.end(),j) == path.end()) {
 				temp_path = path;
 				temp_path.push_back(j);
+
 				Q.push(temp_path);
 			}
 		}
+		
 
 	}
 	return results;
@@ -114,6 +120,7 @@ vector<int> Genetic::fitnessEvaluation(vector<vector<int>> population) {
 		fitness.push_back(distance);
 		distance = 0;
 	}
+	return fitness;
 }
 
 vector<vector<int>> Genetic::selectBestHromosomsToReproduce(vector<int> fitness, vector<vector<int>> population) {
@@ -127,4 +134,5 @@ vector<vector<int>> Genetic::selectBestHromosomsToReproduce(vector<int> fitness,
 	}
 	best_hromosoms.push_back(population[first_best_id]);
 	best_hromosoms.push_back(population[second_best_id]);
+	return best_hromosoms;
 }
