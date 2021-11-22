@@ -10,7 +10,8 @@ using namespace std;
 class Genetic {
 	int source, destination,n;
 	vector<vector<int>> graph;
-	vector<int> fitnessEvaluation();
+	vector<int> fitnessEvaluation(vector<vector<int>> population);
+	vector<vector<int>> selectBestHromosomsToReproduce(vector<int> fitness, vector<vector<int>> population);
 	
 public:
 	Genetic(int source,int destination,int n, vector<vector<int>> graph);

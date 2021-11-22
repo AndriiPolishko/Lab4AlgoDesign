@@ -89,14 +89,42 @@ vector<vector<int>> Genetic::readInitialPopulationFromTheFile() {
 	while(!fin.eof()) {
 		for(int i = 0;i < n; i++) {
 			fin >> temp;
+
 			if(temp==";") {
 				initial_population.push_back(gen);
 				gen.clear();
 				break;
 			}
+
 			gen.push_back(stoi(temp));
 		}
 	}
 
 	return initial_population;
+}
+
+vector<int> Genetic::fitnessEvaluation(vector<vector<int>> population) {
+	vector<int> fitness;
+	vector<int> current_gen;
+	int distance = 0;
+	for( int gen = 0; gen < population.size(); gen++) {
+		for( int i = 0; i < population[gen].size()-1; i++) {
+			distance += graph[ population[ gen ][ i ] ][ population[ gen ][ i+1 ] ];
+		}
+		fitness.push_back(distance);
+		distance = 0;
+	}
+}
+
+vector<vector<int>> Genetic::selectBestHromosomsToReproduce(vector<int> fitness, vector<vector<int>> population) {
+	int first_best_id = 0, second_best_id = 0;
+	vector<vector<int>> best_hromosoms;
+	for(int i = 0; i < fitness.size(); i++) {
+		if(fitness[i]< fitness[first_best_id]) {
+			second_best_id = first_best_id;
+			first_best_id = i;
+		}
+	}
+	best_hromosoms.push_back(population[first_best_id]);
+	best_hromosoms.push_back(population[second_best_id]);
 }
