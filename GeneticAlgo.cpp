@@ -52,3 +52,51 @@ void Genetic::printInitialPopulation(vector<vector<int>> initial_population) {
 		cout << endl;
 	}
 }
+
+void Genetic::writeInitialPopulationToTheFile(vector<vector<int>> initial_population) {
+	ofstream fout;
+	string file_path = "InitialPopulation.txt";
+	fout.open(file_path);
+
+	if(!fout.is_open()) {
+		cout << "Can`t open the file " << file_path;
+		exit(1);
+	}
+
+	for( int i = 0; i < initial_population.size(); i++) {
+		for( int j = 0; j < initial_population[i].size(); j++) {
+			fout<< initial_population[i][j] << " ";
+		}
+		fout <<';' << '\n';
+	}
+}
+
+vector<vector<int>> Genetic::readInitialPopulationFromTheFile() {
+	vector<vector<int>> initial_population;
+	vector<int> gen;
+
+	string temp;
+
+	ifstream fin;
+	string file_path = "InitialPopulation.txt";
+	fin.open(file_path);
+
+	if (!fin.is_open()) {
+		cout << "Can`t open the file " << file_path;
+		exit(1);
+	}
+
+	while(!fin.eof()) {
+		for(int i = 0;i < n; i++) {
+			fin >> temp;
+			if(temp==";") {
+				initial_population.push_back(gen);
+				gen.clear();
+				break;
+			}
+			gen.push_back(stoi(temp));
+		}
+	}
+
+	return initial_population;
+}
