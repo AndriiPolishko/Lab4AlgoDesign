@@ -1,3 +1,3 @@
 #pragma once
-int VERTECIES = 15;
-int NODE_DEGREE = 10;
+const int VERTECIES = 150;
+const int NODE_DEGREE = 20;

@@ -5,6 +5,7 @@
 #include <ctime>
 #include <string>
 #include "Constants.h"
+//NODE_DEGREE and VERTECIES
 using namespace std;
 vector<vector<int>> createGraph(int n, string path) {
 
@@ -24,7 +25,7 @@ vector<vector<int>> createGraph(int n, string path) {
 			int fill_or_not = rand() % 2 + 1;
 
 			if(fill_or_not%2==0  && visited[j][i]!=-1 && graph[j][i]==0) {
-				if (degrees[i] >= 10 || degrees[j] >= 10)
+				if (degrees[i] >= NODE_DEGREE || degrees[j] >= NODE_DEGREE)
 					continue;
 				visited[i][j] = -1;
 				visited[j][i] = -1;
