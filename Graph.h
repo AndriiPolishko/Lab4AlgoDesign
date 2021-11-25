@@ -84,16 +84,10 @@ vector<vector<int>> getGraphFromFile(int n, string path) {
 
 void printTheGraph(vector<vector<int>> graph) {
 	for (int i = 0; i < graph.size(); i++)
-		cout << setw(5) << i;
-	cout << endl;
-	for (int i = 0; i < graph.size(); i++)
 	{
-		for (int j = 0; j < graph.size(); j++) {
-			if (j == 0)
-				cout << i;
+		for (int j = 0; j < graph.size(); j++) 
 			cout << setw(5) << graph[i][j];
-		}
-			
+
 		cout << endl;
 	}
 }
